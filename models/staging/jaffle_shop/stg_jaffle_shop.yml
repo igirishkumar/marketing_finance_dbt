@@ -9,6 +9,10 @@ models:
         tests:
           - unique
           - not_null
+      - name: first_name
+        description: Customer's first name.
+      - name: last_name
+        description: Customer's last name.
 
   - name: stg_jaffle_shop__orders
     description: Staged order data from our jaffle shop app.
@@ -34,3 +38,31 @@ models:
           - relationships:
               to: ref('stg_jaffle_shop__customers')
               field: customer_id
+      - name: order_date
+        description: Date of the item ordered.
+
+  - name: stg_strip__payments
+    description: Staged payment data from our jaffle shop app.
+    columns:
+      - name: payment_id
+        description: Unique identifier for each payment transaction. Not a primary key.
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        description: Links payment to an order.
+        tests:
+        - relationships:
+            to: ref('stg_jaffle_shop__orders')
+            field: order_id
+      - name: payment_method
+        description: Types of payment used for ordering the item.
+      - name: status
+        description: Payment status (successful, failed, pending).
+        tests:
+          - accepted_values:
+              values: ['successful','failed','pending']
+      - name: amount
+        description: Total amount processed for the payment.
+      - name: created_at
+        description: Timestamp of the payment done.
