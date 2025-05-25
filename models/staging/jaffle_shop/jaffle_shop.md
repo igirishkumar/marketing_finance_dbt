@@ -11,3 +11,11 @@ One of the following values:
 | returned       | Item has been returned                           |
 
 {% enddocs %}
+
+{% docs customer_id %}
+A unique identifier for each user in the system, used across multiple models for tracking user interactions.
+{% enddocs %}
+
+{% docs order_id %}
+A unique identifier for each order in the system, used across multiple models for tracking user interactions.
+{% enddocs %}
