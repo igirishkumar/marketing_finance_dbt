@@ -41,7 +41,7 @@ models:
       - name: order_date
         description: Date of the item ordered.
 
-  - name: stg_strip__payments
+  - name: stg_stripe__payments
     description: Staged payment data from our jaffle shop app.
     columns:
       - name: payment_id
@@ -61,7 +61,7 @@ models:
         description: Payment status (successful, failed, pending).
         tests:
           - accepted_values:
-              values: ['successful','failed','pending']
+              values: ['success','fail']
       - name: amount
         description: Total amount processed for the payment.
       - name: created_at
